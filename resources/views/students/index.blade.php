@@ -38,10 +38,19 @@
           <td>{{ $student->class }}</td>
           <td>{{ $student->fees }}</td>
           <td>{{ $student->teacher->name }}</td>
-          <td>
-            <a class="btn btn-primary btn-sm" href="{{ route('students.edit',$student->id) }}">Edit</a>
+          <td class="d-flex">
+            <div class="mr-2">
 
-            <a class="btn btn-danger btn-sm" href="{{ route('students.destroy',$student->id) }}">Delete</a>
+              <a class="btn btn-primary btn-sm" href="{{ route('students.edit', $student->id) }}">Edit</a>
+            </div>
+
+            {{-- <a class="btn btn-danger btn-sm" href="{{ route('students.destroy', $student->id) }}">Delete</a> --}}
+
+            <form action="{{ route('students.destroy', $student->id) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
           </td>
         </tr>
 

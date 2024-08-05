@@ -25,8 +25,12 @@ git clone : https://github.com/mitesh-tambe/ums-crud.git
 
 composer install
 
+php artisan key:generate
+
 php artisan migrate
 
-php artisan db:seed
+php artisan db:seed --class=teacherSeeder
+
+php artisan db:seed --class=StudentSeeder
 
 php artisan serve
