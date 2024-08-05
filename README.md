@@ -3,7 +3,7 @@ University Students Management System
 This project is a basic CRUD (Create, Read, Update, Delete) application built using the Laravel framework to manage University Students.
 Requirements
 
-    Laravel 9 or above
+    Laravel 11
     MySQL Database
     Composer
     Node.js and npm (for frontend dependencies)
@@ -16,7 +16,6 @@ Features
     Responsive design using Bootstrap
     User authentication using Laravel's built-in system
     Pagination for listing students
-    Soft delete for Students
     Search functionality to filter Students
     JavaScript DataTables for enhanced table features
 
