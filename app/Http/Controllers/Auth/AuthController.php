@@ -85,8 +85,8 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            $totalStudents = Student::count();
-            $totalTeachers = Teacher::count();
+            $totalStudents = Student::where('status', 1)->count();
+            $totalTeachers = Teacher::where('status', 1)->count();
 
             return view('dashboard', compact('totalStudents', 'totalTeachers'));
         }
