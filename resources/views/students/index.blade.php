@@ -44,12 +44,10 @@
               <a class="btn btn-primary btn-sm" href="{{ route('students.edit', $student->id) }}">Edit</a>
             </div>
 
-            {{-- <a class="btn btn-danger btn-sm" href="{{ route('students.destroy', $student->id) }}">Delete</a> --}}
-
-            <form action="{{ route('students.destroy', $student->id) }}" method="POST">
+            <form id="delete-form-{{ $student->id }}" action="{{ route('students.destroy', $student->id) }}" method="POST">
               @csrf
               @method('DELETE')
-              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $student->id }})">Delete</button>
             </form>
           </td>
         </tr>
@@ -64,4 +62,14 @@
 
     {!! $students->links() !!}
   </div>
+
+  <script>
+    function confirmDelete(studentId) {
+        if (confirm('Do you really want to delete this record?')) {
+            document.getElementById('delete-form-' + studentId).submit();
+        } else {
+          //
+        }
+    }
+  </script>
 @endsection

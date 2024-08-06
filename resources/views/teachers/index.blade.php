@@ -34,10 +34,16 @@
           <td>{{ ++$i }}</td>
           <td>{{ $teacher->name }}</td>
           <td>{{ $teacher->gender }}</td>
-          <td>
-            <a class="btn btn-primary btn-sm" href="{{ route('teachers.edit',$teacher->id) }}">Edit</a>
-
-            <a class="btn btn-danger btn-sm" href="{{ route('teachers.destroy',$teacher->id) }}">Delete</a>
+          <td class="d-flex">
+            <div class="mr-2">
+              <a class="btn btn-primary btn-sm" href="{{ route('teachers.edit',$teacher->id) }}">Edit</a>
+            </div>
+            
+            <form id="delete-form-{{ $teacher->id }}" action="{{ route('teachers.destroy', $teacher->id) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $teacher->id }})">Delete</button>
+            </form>
           </td>
         </tr>
 
@@ -51,4 +57,14 @@
 
     {!! $teachers->links() !!}
   </div>
+
+  <script>
+    function confirmDelete(studentId) {
+        if (confirm('Do you really want to delete this record?')) {
+            document.getElementById('delete-form-' + studentId).submit();
+        } else {
+          //
+        }
+    }
+  </script>
 @endsection
