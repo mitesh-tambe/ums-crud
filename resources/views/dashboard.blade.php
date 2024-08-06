@@ -5,7 +5,7 @@
 <div class="d-flex gap-3">
 <div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">Total Stuents</h5>
+      <h5 class="card-title">Total Students</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{ $totalStudents }}</h6>
     </div>
 </div>

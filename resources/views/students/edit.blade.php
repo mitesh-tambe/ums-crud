@@ -69,12 +69,20 @@
       <label for="class_teacher_id" class="col-form-label">Select class teacher</label>
         
         <select class="form-select" name="class_teacher_id">
-           
-          @foreach($teachers as $teacher)
-          <option value="{{ $teacher->id}}">
-              {{ $teacher->name }}
-          </option>
-          @endforeach
+          @if(!empty($student->class_teacher_id))
+              @foreach($teachers as $teacher)
+                  <option value="{{ $teacher->id }}"
+                      @if($student->class_teacher_id == $teacher->id) selected @endif>
+                      {{ $teacher->name }}
+                  </option>
+              @endforeach
+          @else
+              @foreach($teachers as $teacher)
+                  <option value="{{ $teacher->id }}">
+                      {{ $teacher->name }}
+                  </option>
+              @endforeach
+          @endif
         </select>
     </div>
 
